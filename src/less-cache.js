@@ -1,11 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let LessCache;
 const crypto = require('crypto');
 const {basename, dirname, extname, join, relative} = require('path');
 
@@ -18,7 +10,7 @@ const walkdir = require('walkdir').sync;
 const cacheVersion = 1;
 
 module.exports =
-(LessCache = class LessCache {
+class LessCache {
   static digestForContent(content) {
     return crypto.createHash('SHA1').update(content, 'utf8').digest('hex');
   }
@@ -36,15 +28,14 @@ module.exports =
   //
   //   * fallbackDir: A string path to a directory containing a readable cache to read
   //                  from an entry is not found in this cache (optional)
-  constructor(params) {
-    if (params == null) { params = {}; }
+  constructor(params = {}) {
     ({
       cacheDir: this.cacheDir, importPaths: this.importPaths, resourcePath: this.resourcePath, fallbackDir: this.fallbackDir, syncCaches: this.syncCaches,
       lessSourcesByRelativeFilePath: this.lessSourcesByRelativeFilePath, importedFilePathsByRelativeImportPath: this.importedFilePathsByRelativeImportPath
     } = params);
 
-    if (this.lessSourcesByRelativeFilePath == null) { this.lessSourcesByRelativeFilePath = {}; }
-    if (this.importedFilePathsByRelativeImportPath == null) { this.importedFilePathsByRelativeImportPath = {}; }
+    this.lessSourcesByRelativeFilePath ??= {};
+    this.importedFilePathsByRelativeImportPath ??= {};
     this.importsCacheDir = this.cacheDirectoryForImports(this.importPaths);
     if (this.fallbackDir) {
       this.importsFallbackDir = join(this.fallbackDir, basename(this.importsCacheDir));
@@ -62,8 +53,7 @@ module.exports =
     };
   }
 
-  cacheDirectoryForImports(importPaths) {
-    if (importPaths == null) { importPaths = []; }
+  cacheDirectoryForImports(importPaths = []) {
     if (this.resourcePath) {
       importPaths = importPaths.map(importPath => {
         return this.relativize(this.resourcePath, importPath);
@@ -78,7 +68,7 @@ module.exports =
 
   getImportedFiles(importPaths) {
     let importedFiles = [];
-    for (let absoluteImportPath of Array.from(importPaths)) {
+    for (let absoluteImportPath of importPaths) {
       let importPath = null;
       if (this.resourcePath != null) {
         importPath = this.relativize(this.resourcePath, absoluteImportPath);
@@ -108,8 +98,7 @@ module.exports =
     return importedFiles;
   }
 
-  setImportPaths(importPaths) {
-    if (importPaths == null) { importPaths = []; }
+  setImportPaths(importPaths = []) {
     const importedFiles = this.getImportedFiles(importPaths);
 
     const pathsChanged = !_.isEqual(this.importPaths, importPaths);
@@ -325,4 +314,4 @@ module.exports =
     this.putCachedCss(filePath, digest, css, imports);
     return css;
   }
-});
+}
