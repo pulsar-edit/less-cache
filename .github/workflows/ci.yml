@@ -1,16 +1,23 @@
 name: CI
 
-on: [push]
+on:
+  pull_request:
+  push:
+    branches: [ "master" ]
 
 jobs:
- Build:
-  runs-on: ubuntu-latest
+ test:
+  strategy:
+    matrix:
+      node-version: [16.x, 18.x]
+      os: [ ubuntu-latest, windows-latest, macos-latest]
+  runs-on: ${{ matrix.os }}
   steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        node-version: 6
-    - name: Install dependencies
+        node-version: ${{ matrix.node-version }}
+    - name: Install Dependencies
       run: npm install
     - name: Test
       run: npm test

@@ -157,6 +157,8 @@ class LessCache
     if relativePath.indexOf('..') is 0
       to
     else
+      # path.relative returns '/' on POSIX and '\\' on Windows. Lets stop that and make happy tests
+      relativePath = relativePath.replace /\\/g, "/"
       relativePath
 
   getCachePath: (directory, filePath) ->
