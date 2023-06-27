@@ -18,12 +18,7 @@
     "less.js",
     "cache"
   ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/pulsar-edit/less-cache/raw/master/LICENSE.md"
-    }
-  ],
+  "license": "MIT",
   "dependencies": {
     "fs-plus": "^3.1.1",
     "less": "^3.12.2",
