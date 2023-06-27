@@ -2,13 +2,9 @@
   "name": "less-cache",
   "version": "1.1.1",
   "description": "Less compile cache",
-  "main": "./lib/less-cache",
+  "main": "./src/less-cache",
   "scripts": {
-    "clean": "shx rm -rf lib",
-    "test": "jasmine-focused --captureExceptions --coffee spec",
-    "coffee": "npm run clean && shx cp -r src lib && coffee -c -M -o lib lib && shx rm -rf lib/*.coffee",
-    "build": "npm run coffee",
-    "prepare": "npm run build"
+    "test": "jasmine-focused --captureExceptions --coffee spec"
   },
   "repository": {
     "type": "git",
