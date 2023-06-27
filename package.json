@@ -12,12 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/atom/less-cache.git"
+    "url": "https://github.com/pulsar-edit/less-cache.git"
   },
   "bugs": {
-    "url": "https://github.com/atom/less-cache/issues"
+    "url": "https://github.com/pulsar-edit/less-cache/issues"
   },
-  "homepage": "http://atom.github.io/less-cache",
   "keywords": [
     "less",
     "less.js",
@@ -26,7 +25,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/atom/less-cache/raw/master/LICENSE.md"
+      "url": "http://github.com/pulsar-edit/less-cache/raw/master/LICENSE.md"
     }
   ],
   "dependencies": {

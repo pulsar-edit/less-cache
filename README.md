@@ -1,4 +1,4 @@
-# Less Cache [![CI](https://github.com/atom/less-cache/actions/workflows/ci.yml/badge.svg)](https://github.com/atom/less-cache/actions/workflows/ci.yml)
+# Less Cache [![CI](https://github.com/pulsar-edit/less-cache/actions/workflows/ci.yml/badge.svg)](https://github.com/pulsar-edit/less-cache/actions/workflows/ci.yml)
 Caches the compiled `.less` files as `.css`.
 
 ## Using
