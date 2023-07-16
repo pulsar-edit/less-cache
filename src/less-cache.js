@@ -253,7 +253,12 @@ class LessCache {
 
   parseLess(filePath, contents) {
     let css = null;
-    const options = {filename: filePath, syncImport: true, paths: this.importPaths};
+    const options = {
+      filename: filePath,
+      syncImport: true,
+      paths: this.importPaths,
+      javascriptEnabled: true
+    };
     // load or assign less and lessFs
     if (less === null) {
       less = require('less');

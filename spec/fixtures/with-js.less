@@ -1,0 +1,8 @@
+.p(@foo) {
+  @value: ~`@{@foo} + 'px'`;
+  div {
+    padding: @value;
+  }
+}
+
+.p(10);
