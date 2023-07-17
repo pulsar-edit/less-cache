@@ -55,6 +55,26 @@ describe "LessCache", ->
 
       """
 
+    it "tolerates inline JavaScript", ->
+      filePath = join(fixturesDir, 'with-js.less')
+      lessWithJs = """
+      .p(@foo) {
+        @value: ~`@{foo} + 'px'`;
+        div {
+          padding: @value;
+        }
+      }
+
+      .p(10);
+      """
+      css = cache.cssForFile(filePath, lessWithJs)
+      expect(css).toBe """
+        div {
+          padding: 10px;
+        }
+
+      """
+
   describe "::readFileSync(filePath)", ->
     [css] = []
 
