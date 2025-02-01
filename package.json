@@ -1,5 +1,5 @@
 {
-  "name": "less-cache",
+  "name": "@pulsar-edit/less-cache",
   "version": "2.0.1",
   "description": "Less compile cache",
   "main": "./src/less-cache",
